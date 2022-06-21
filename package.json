@@ -1,0 +1,17 @@
+{
+  "name": "daily_journal",
+  "version": "1.0.0",
+  "description": "a way to keep track of day to get ready for tomorrow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "journal",
+    "to-do",
+    "list",
+    "memories"
+  ],
+  "author": "Jace Crowe",
+  "license": "ISC"
+}
