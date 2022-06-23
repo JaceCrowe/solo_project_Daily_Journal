@@ -1,6 +1,6 @@
 import React from 'react'
 import MainContainer from './mainContainer'
-import Entries from './entries'
+// import Entries from './entries'
 
 
 class App extends React.Component{
@@ -25,7 +25,7 @@ render()
             <MainContainer/>
         </div>
         <div className='entries'>
-            <Entries/>
+            {/* <Entries/> */}
         </div>
       </div>
     )
