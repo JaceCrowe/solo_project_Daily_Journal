@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb:mongodb+srv://jacey:baby@cluster0.njkkogx.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('')
 .then(() => console.log('DB connection successful'))
 .catch((err) => console.log(err));
 
