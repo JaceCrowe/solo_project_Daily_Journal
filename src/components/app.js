@@ -1,13 +1,13 @@
 import React from 'react'
 import MainContainer from './mainContainer'
-// import Entries from './entries'
+import Entries from './entries'
 
 
 class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-
+            
         };
     };
 
@@ -17,15 +17,15 @@ componentDidMount() {
 componentWillUnmount() {
 }
 
-render() 
-{
+render() {
+
     return(
       <div className='row'>
         <div className='main'>
             <MainContainer/>
         </div>
         <div className='entries'>
-            {/* <Entries/> */}
+            <Entries/>
         </div>
       </div>
     )

@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
-try {
-     mongoose.connect('mongodb:mongodb+srv://jacey:baby@cluster0.njkkogx.mongodb.net/?retryWrites=true&w=majority')
-} catch (error) {
-    handleError(error);
-}
-const {Schema} = mongoose;
-const ObjectId = Schema.ObjectId;
+mongoose.connect('mongodb:mongodb+srv://jacey:baby@cluster0.njkkogx.mongodb.net/?retryWrites=true&w=majority')
+.then(() => console.log('DB connection successful'))
+.catch((err) => console.log(err));
 
-const DayEntry = new Schema({
+
+const {Schema} = mongoose;
+
+const dayEntry = new Schema({
     date: {
         type: String,
         required: true,
@@ -19,5 +18,5 @@ const DayEntry = new Schema({
     tomorrowsFive: String,
     tomValue : [String]
 })
-
-module.exports = mongoose.model('DayEntry',DayEntry);
+const Entry = mongoose.model('entry',dayEntry);
+module.exports = Entry;

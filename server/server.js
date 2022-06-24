@@ -12,16 +12,17 @@ app.get('/', (req, res) => {
 });
 app.use(express.static(path.resolve(__dirname,'../build')));
 
-app.get('/entry', entriesController.getEntry, (req, res) => {
-    return res.status(200).json({})
+
+app.get('/', entriesController.getEntry, (req, res) => {
+    return res.status(200).json(res.locals.entries);
 })
 
-app.post('/entry', entriesController.createEntry, (req, res) => {
-    return res.status(200).json({});
+app.post('/ent', entriesController.createEntry, (req, res) => {
+    return res.status(200).json(res.locals.entries);
 })
 
-app.delete('/entry', entriesController.deleteEntry, (req,res) => {
-    return res.status(200).json({})
+app.delete('/ent', entriesController.deleteEntry, (req,res) => {
+    return res.status(200).json(res.locals.entries);
 })
 
 app.use((req, res, next) => {
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    console.log('Error in Middelvare Called'),
+    console.log('Error in Middelware Called'),
     console.log('Path: ', req.path);
     console.error('Error: ', err);
 });

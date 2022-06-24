@@ -16,6 +16,7 @@ componentWillUnmount() {
 }
 
 handleChange(event) {
+    event.preventDefault();
     const value = event.target.value;
     this.setState({...this.state, [event.target.name] : value});
 }

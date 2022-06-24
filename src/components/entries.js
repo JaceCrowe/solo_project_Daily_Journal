@@ -1,17 +1,17 @@
 import React from 'react'
-import { db } from '../../server/models/journalModel';
+// import { db } from '../../server/models/journalModel';
 
 class Entries extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            entries: [],
+            entries: ["June 22 2022",],
         };
         this.renderEntryList = this.renderEntryList.bind(this);
     };
     
 componentDidMount() {
-    // this.renderEntryList();
+    this.renderEntryList();
 }
 
 componentWillUnmount() {
@@ -19,22 +19,14 @@ componentWillUnmount() {
 }
 
 renderEntryList(event) {
-    // fetch('/entry', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    // })
-    // .then(res => JSON.parse(res))
-    // .then(data => console.log(data))
-    // .then(data => {
-    //     const { date } = data;
-    //     this.state.entries.map((entries,index) => {
-    //         return(
-    //             <div key={index}>{date}</div>
-    //         )
-    //    })
-    // })
+    fetch('/', {
+        method: 'GET',
+    })
+    .then(res => JSON.parse(res))
+    .then(data => console.log("this is the" +data))
+    .then(data => {
+      this.setState(this.state.entries = [...this.state.entries, data])
+    })
    
 }
 
@@ -43,9 +35,9 @@ render()
     return(
         <div>
             <h2>Entries</h2>
-            <ul>
-                {/* {this.renderEntryList()} */}
-            </ul>
+                {this.state.entries.map((element,index) => {
+                     return <button key={index} ><li className='entryList'> {element} </li></button>
+                })}
         </div>
     )
 }

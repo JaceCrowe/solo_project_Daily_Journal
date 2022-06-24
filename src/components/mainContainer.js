@@ -11,15 +11,16 @@ import mongoose from 'mongoose'
 class MainContainer extends React.Component{
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.addFormFields = this.addFormFields.bind(this);
         this.state = {
             date: '',
             inDepthValue: '',
             formValues: [{memory: ''},],
             tomValue: ['','','','','']
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this); 
-        this.addFormFields = this.addFormFields.bind(this);
+   
     };
 componentDidMount() {
     this.getDate();
@@ -62,11 +63,11 @@ getDate = () => {
     this.setState({ date: dated })
 }
 
-handleChange(i,e) {
-    let formValues = this.state.formValues;
-    formValues[i][e.target.name] = e.target.value;
-    this.setState({ formValues });
-}
+// handleChange(i,e) {
+//     let formValues = this.state.formValues;
+//     formValues[i][e.target.name] = e.target.value;
+//     this.setState({ formValues });
+// }
 
 addFormFields(event) {
     event.preventDefault();
@@ -77,20 +78,20 @@ addFormFields(event) {
 }
 
 render() {
-{
+
     return(
         <div>
             <div className='date'><Dates date={this.state.date}/></div>
             <div className='tags'><Tags/></div>
-            <div className='takeAways'><TakeAways/></div>
+            {/* <div className='takeAways'><TakeAways/></div> */}
             <div>
             <h2>Take Aways:</h2>
-              <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+              <form>
                 <ol>
                  {this.state.formValues.map((element, index) => {
                              return <li key={index}><input className='takeAwayList' type="text" value={element.memory || ""} onChange={this.handleChange} placeholder="I tried"></input></li>
                   })}
-                  <button className="addButton" onClick={() => this.addFormFields}>Another Memory?</button> 
+                  <button className="addButton" onClick={this.addFormFields}>Another Memory?</button> 
                 </ol>
               </form>
             </div>
@@ -100,7 +101,6 @@ render() {
         </div>
      
     )
-}
 }
 }
 export default MainContainer;
